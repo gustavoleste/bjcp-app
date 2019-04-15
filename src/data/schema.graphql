@@ -1,0 +1,42 @@
+type statsField {
+    ibu: statsFields!
+    og: statsFields!
+    fg: statsFields!
+    srm: statsFields!
+    abv: statsFields!
+  }
+
+  type statsFields {
+    low: String!
+    high: String!
+  }
+
+  type Style {
+    id: ID!
+    name: String!
+    aroma: String
+    appearance: String!
+    flavor: String!
+    mouthfeel: String!
+    impression: String!
+    comments: String!
+    history: String!
+    ingredients: String!
+    comparison: String!
+    examples:[String]!
+    tags: [String]!
+    stats: statsField!
+  }
+
+  type Category {
+    id: ID!
+    name: String
+    description: String
+    styles:[Style]
+  }
+
+  type Query {
+    categories: [Category]
+    category(id: ID!):Category
+    style(id: ID!): Style
+  }
