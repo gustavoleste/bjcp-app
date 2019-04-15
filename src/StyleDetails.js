@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { graphql, QueryRenderer } from "react-relay";
-import { View, Text, ActivityIndicator, ScrollView } from "react-native";
-import { withNavigation } from "react-navigation";
+import { View, Text, ActivityIndicator, ScrollView,StyleSheet } from "react-native";
 
 import environment from "./relay/Environment";
 
@@ -43,21 +42,21 @@ class StyleDetails extends Component {
           }
           console.log(props.style);
           return (
-            <ScrollView>
-              <Text>Name:</Text>
-              <Text>{props.style.name}</Text>
-              <Text>History:</Text>
-              <Text>{props.style.aroma}</Text>
-              <Text>Ingredients:</Text>
-              <Text>{props.style.ingredients}</Text>
-              <Text>Comparison:</Text>
-              <Text>{props.style.comparison}</Text>
-              <Text>Comments:</Text>
-              <Text>{props.style.comments}</Text>
-              <Text>Aroma:</Text>
-              <Text>{props.style.aroma}</Text>
-              <Text>Flavor:</Text>
-              <Text>{props.style.flavor}</Text>
+            <ScrollView style={styles.constainer}>
+              <Text style={styles.title}>Name:</Text>
+              <Text style={styles.details}>{props.style.name}</Text>
+              <Text style={styles.title}>History:</Text>
+              <Text style={styles.details}>{props.style.aroma}</Text>
+              <Text style={styles.title}>Ingredients:</Text>
+              <Text style={styles.details}>{props.style.ingredients}</Text>
+              <Text style={styles.title}>Comparison:</Text>
+              <Text style={styles.details}>{props.style.comparison}</Text>
+              <Text style={styles.title}>Comments:</Text>
+              <Text style={styles.details}>{props.style.comments}</Text>
+              <Text style={styles.title}>Aroma:</Text>
+              <Text style={styles.details}>{props.style.aroma}</Text>
+              <Text style={styles.title}>Flavor:</Text>
+              <Text style={styles.details}>{props.style.flavor}</Text>
             </ScrollView>
           );
         }}
@@ -66,4 +65,26 @@ class StyleDetails extends Component {
   }
 }
 
-export default withNavigation(StyleDetails);
+export default StyleDetails;
+
+const styles = StyleSheet.create({
+  constainer: {
+    backgroundColor: '#FFF1DC',
+    flex: 1
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: '#975B02',
+    margin: 5,
+    padding: 10
+  },
+  details: {
+    fontFamily: 'monospace',
+    fontSize: 15,
+    margin: 5,
+    padding: 10,
+    color: '#342309',
+    fontWeight: 'bold'
+  }
+});

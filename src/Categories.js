@@ -5,9 +5,9 @@ import {
   Text,
   FlatList,
   TouchableOpacity,
-  ActivityIndicator
+  ActivityIndicator,
+  StyleSheet
 } from "react-native";
-import { withNavigation } from "react-navigation";
 
 import environment from "./relay/Environment";
 
@@ -41,8 +41,8 @@ class Categories extends Component {
             return <ActivityIndicator />;
           }
           return (
-            <View>
-              <Text>Categories:</Text>
+            <View style={styles.constainer}>
+              <Text style={styles.title}>Categories:</Text>
               <FlatList
                 data={props.categories}
                 keyExtractor={item => item.id}
@@ -56,7 +56,7 @@ class Categories extends Component {
                         })
                       }
                     >
-                      <Text>{item.name}</Text>
+                      <Text style={styles.category}>{item.name}</Text>
                     </TouchableOpacity>
                   );
                 }}
@@ -69,4 +69,26 @@ class Categories extends Component {
   }
 }
 
-export default withNavigation(Categories);
+export default Categories;
+
+const styles = StyleSheet.create({
+  constainer:{
+    backgroundColor: '#FFF1DC',
+    flex: 1
+  },
+  title:{
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: '#975B02',
+    margin: 5,
+    padding: 10
+  },
+  category:{
+    fontFamily: 'monospace',
+    fontSize: 15,
+    margin: 5,
+    padding: 10,
+    color: '#342309',
+    fontWeight: 'bold',
+  }
+})

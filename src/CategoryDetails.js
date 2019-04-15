@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import { graphql, QueryRenderer } from "react-relay";
-import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
-import { withNavigation } from "react-navigation";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ActivityIndicator,
+  StyleSheet,
+  ScrollView
+} from "react-native";
 
 import environment from "./relay/Environment";
 
@@ -40,12 +46,12 @@ class CategoryDetails extends Component {
             return <ActivityIndicator />;
           }
           return (
-            <View>
-			  <Text>Name:</Text>
-			  <Text>{props.category.name}</Text>
-			  <Text>Description:</Text>
-			  <Text>{props.category.description}</Text>
-              <Text>Styles:</Text>
+            <ScrollView style={styles.constainer}>
+              <Text style={styles.title}>Name:</Text>
+              <Text style={styles.details}>{props.category.name}</Text>
+              <Text style={styles.title}>Description:</Text>
+              <Text style={styles.details}>{props.category.description}</Text>
+              <Text style={styles.title}>Styles:</Text>
               {props.category.styles.map(style => {
                 return (
                   <TouchableOpacity
@@ -57,11 +63,11 @@ class CategoryDetails extends Component {
                     }
                     key={style.id}
                   >
-                    <Text>{style.name}</Text>
+                    <Text style={styles.details}>{style.name}</Text>
                   </TouchableOpacity>
                 );
               })}
-            </View>
+            </ScrollView>
           );
         }}
       />
@@ -69,4 +75,26 @@ class CategoryDetails extends Component {
   }
 }
 
-export default withNavigation(CategoryDetails);
+export default CategoryDetails;
+
+const styles = StyleSheet.create({
+  constainer: {
+    backgroundColor: '#FFF1DC',
+    flex: 1
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: '#975B02',
+    margin: 5,
+    padding: 10
+  },
+  details: {
+    fontFamily: 'monospace',
+    fontSize: 15,
+    margin: 5,
+    padding: 10,
+    color: '#342309',
+    fontWeight: 'bold'
+  }
+});
