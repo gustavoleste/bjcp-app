@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash a356a3615fe57ffd4feecae7b0ec487b
+ * @relayHash 4d86559da244254ce19b21bb62c449e0
  */
 
 /* eslint-disable */
@@ -9,22 +9,22 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-export type AppQueryVariables = {||};
-export type AppQueryResponse = {|
+export type CategoriesQueryVariables = {||};
+export type CategoriesQueryResponse = {|
   +categories: ?$ReadOnlyArray<?{|
     +name: ?string,
     +id: string,
   |}>
 |};
-export type AppQuery = {|
-  variables: AppQueryVariables,
-  response: AppQueryResponse,
+export type CategoriesQuery = {|
+  variables: CategoriesQueryVariables,
+  response: CategoriesQueryResponse,
 |};
 */
 
 
 /*
-query AppQuery {
+query CategoriesQuery {
   categories {
     name
     id
@@ -64,7 +64,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "AppQuery",
+    "name": "CategoriesQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
@@ -72,19 +72,19 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "AppQuery",
+    "name": "CategoriesQuery",
     "argumentDefinitions": [],
     "selections": (v0/*: any*/)
   },
   "params": {
     "operationKind": "query",
-    "name": "AppQuery",
+    "name": "CategoriesQuery",
     "id": null,
-    "text": "query AppQuery {\n  categories {\n    name\n    id\n  }\n}\n",
+    "text": "query CategoriesQuery {\n  categories {\n    name\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'b4201376376ef200c0794d2cc445a691';
+(node/*: any*/).hash = 'dfdf5dd84774909e2b06f968fc2a26d3';
 module.exports = node;
